@@ -9,4 +9,11 @@ import { useCounterStore } from "../stores/counter";
 
 const counterStore = useCounterStore();
 const counter = computed(() => counterStore.count);
+
+/**
+ * Sama dengan fitur watch, tapi ini milik store
+ */
+counterStore.$subscribe((mutation, state) => {
+  console.log(mutation, state);
+});
 </script>

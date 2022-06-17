@@ -4,6 +4,11 @@
   <button @click="increment">Increment</button>
   <button @click="decrement">Decrement</button>
   <button @click="reset">Reset</button>
+
+  <hr />
+  <button @click="incrementWithActions">Increment With Actions</button>
+  <button @click="decrementWithActions">Decrement With Actions</button>
+  <button @click="incrementByWithActions(2)">Increment +2 with Actions</button>
 </template>
 
 <script setup>
@@ -25,5 +30,17 @@ const decrement = () => {
 
 const reset = () => {
   counter.$reset(); /** ini fungsi bawaan pinia */
+};
+
+const incrementWithActions = () => {
+  counter.increment();
+};
+
+const decrementWithActions = () => {
+  counter.decrement();
+};
+
+const incrementByWithActions = (number) => {
+  counter.incrementBy(number);
 };
 </script>

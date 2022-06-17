@@ -9,12 +9,18 @@
   <button @click="incrementWithActions">Increment With Actions</button>
   <button @click="decrementWithActions">Decrement With Actions</button>
   <button @click="incrementByWithActions(2)">Increment +2 with Actions</button>
+
+  <hr />
+  <button @click="fetchPokemon('ditto')">fetch pokemon ditto</button>
+  <button @click="resetPokemon">reset pokemon</button>
 </template>
 
 <script setup>
 import { useCounterStore } from "../stores/counter";
+import { usePokemonStore } from "../stores/pokemon";
 
 const counter = useCounterStore();
+const pokemon = usePokemonStore();
 
 const increment = () => {
   counter.$patch((state) => {
@@ -43,4 +49,10 @@ const decrementWithActions = () => {
 const incrementByWithActions = (number) => {
   counter.incrementBy(number);
 };
+
+const fetchPokemon = (name) => {
+  pokemon.getPokemonDetails(name);
+};
+
+const resetPokemon = () => pokemon.$reset()
 </script>
